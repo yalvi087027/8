@@ -14,12 +14,20 @@ void bs(int *a, int l, int r, int* s, int* p)
             l1 += 1;
             *s+=1;
         }
-        while (a[r1]>m)
+        if(l1 != (l+r)/2)
+        {
+            *s+=1;
+        }
+        while (a[r1] > m)
         {
             r1 -= 1;
             *s+=1;
         }
-        if(l1<r1)
+        if(r1 != (l+r)/2)
+        {
+            *s+=1;
+        }
+        if(l1 < r1)
         {
             *p+=1;
 
@@ -40,7 +48,7 @@ void bs(int *a, int l, int r, int* s, int* p)
     bs(a, l1, r, s, p);
 }
 
-void puzirek(int *a, int r, int* s, int* p)
+void p___(int *a, int r, int* s, int* p)
 {
     for(int i = 0; i < r; ++i)
     {
@@ -79,7 +87,7 @@ int main()
             {
                 scanf("%d",&a[i]);
             }
-            puzirek(a,k,&s,&p);
+            p___(a, k, &s, &p);
             printf("sravnenia: %d   perestanovki: %d", s,p);
         }
         if(n==2)
@@ -93,7 +101,7 @@ int main()
             {
                 scanf("%d",&a[i]);
             }
-            bs(a,0,k-1,&s,&p);
+            bs(a, 0, k - 1, &s, &p);
 
             printf("\nsravnenia: %d   perestanovki: %d\n", s,p);
         }
