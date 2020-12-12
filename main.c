@@ -11,11 +11,10 @@ void bs(int *a, int l, int r, int* s, int* p)
     {
         while(l1!=(l+r)/2)
         {
+            *s += 1;
             if (a[l1]<m)
             {
-                printf("сравниваются слева: %d %d\n", a[l1], m);
                 l1 += 1;
-                *s += 1;
             }
             else
             {
@@ -24,11 +23,10 @@ void bs(int *a, int l, int r, int* s, int* p)
         }
         while(r1!=(l+r)/2)
         {
+            *s += 1;
             if(a[r1]>m)
             {
-                printf("сравниваются справа: %d %d\n", m, a[r1]);
                 r1 -= 1;
-                *s += 1;
             }
             else
             {
@@ -39,7 +37,6 @@ void bs(int *a, int l, int r, int* s, int* p)
         {
             *p+=1;
 
-            printf("меняются местами: %d %d\n", a[l1],a[r1]);
             int jjj = a[l1];
             a[l1] = a[r1];
             a[r1] = jjj;
