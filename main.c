@@ -9,28 +9,37 @@ void bs(int *a, int l, int r, int* s, int* p)
     int m = a[(l+r)/2];
     while(l1 < r1)
     {
-        while(a[l1]<m)
+        while(l1!=(l+r)/2)
         {
-            l1 += 1;
-            *s+=1;
+            if (a[l1]<m)
+            {
+                printf("сравниваются слева: %d %d\n", a[l1], m);
+                l1 += 1;
+                *s += 1;
+            }
+            else
+            {
+                break;
+            }
         }
-        if(l1 != (l+r)/2)
+        while(r1!=(l+r)/2)
         {
-            *s+=1;
-        }
-        while (a[r1] > m)
-        {
-            r1 -= 1;
-            *s+=1;
-        }
-        if(r1 != (l+r)/2)
-        {
-            *s+=1;
+            if(a[r1]>m)
+            {
+                printf("сравниваются справа: %d %d\n", m, a[r1]);
+                r1 -= 1;
+                *s += 1;
+            }
+            else
+            {
+                break;
+            }
         }
         if(l1 < r1)
         {
             *p+=1;
 
+            printf("меняются местами: %d %d\n", a[l1],a[r1]);
             int jjj = a[l1];
             a[l1] = a[r1];
             a[r1] = jjj;
@@ -48,7 +57,7 @@ void bs(int *a, int l, int r, int* s, int* p)
     bs(a, l1, r, s, p);
 }
 
-void p___(int *a, int r, int* s, int* p)
+void puzirek(int *a, int r, int* s, int* p)
 {
     for(int i = 0; i < r; ++i)
     {
@@ -87,7 +96,8 @@ int main()
             {
                 scanf("%d",&a[i]);
             }
-            p___(a, k, &s, &p);
+            printf("\n");
+            puzirek(a, k, &s, &p);
             printf("sravnenia: %d   perestanovki: %d", s,p);
         }
         if(n==2)
